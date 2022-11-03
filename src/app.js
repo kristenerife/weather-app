@@ -25,7 +25,7 @@ function displayForecast(response){
     let forecast= response.data.daily;
     let forecastElement= document.querySelector("#forecast");
     let forecastHTML = `<div class="row">`
-    let forecastDays = ["Thu", "Fri", "Sat"];
+  
     forecast.forEach(function(forecastDay, index){
         if (index < 6){
     forecastHTML= forecastHTML +    
@@ -92,15 +92,6 @@ function handleSubmit (event) {
     search(cityInputElement.value);
 }
 
-function showFahrenheit(event){
-    event.preventDefault();
-    let temperatureElement= document.querySelector("#temperature");
-    celsiusConversion.classList.remove("active");
-    fahrenheitElement.classList.add("active");
-    let fahrenheitTemperature = (celsiusElement/5*9)+32;
-    temperatureElement.innerHTML= Math.round(fahrenheitTemperature);
-    }
-
 function showCelsius(event){
     event.preventDefault();
     let temperatureElement= document.querySelector("#temperature");
@@ -113,9 +104,6 @@ let celsiusElement = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitElement = document.querySelector("#convert-to-fahrenheit");
-fahrenheitElement.addEventListener("click", showFahrenheit);
 
 let celsiusConversion = document.querySelector("#convert-to-celsius");
 celsiusConversion.addEventListener("click", showCelsius);
